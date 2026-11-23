@@ -1,7 +1,7 @@
 package com.example.cli
 
 fun main() {
-    val names2 = listOf("olha", "maxim", "olha", "oles")
+    val names2 = listOf("Оля", "Максим", "Оля", "Олесь")
 
     println(names2.associateWith { it.length })
 // {Оля=3, Максим=6} — ключ: елемент, значення: результат лямбди
