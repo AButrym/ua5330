@@ -13,14 +13,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myapplication.engine.EMPTY as EMPTY_CELL
 
 @Composable
-fun Tile(n: Int) {
-    val isBlank = n == 16
+fun Tile(
+    n: Int,
+    callback: (Int) -> Unit = {}
+) {
+    val isBlank = n == EMPTY_CELL
     val text = if (isBlank) "" else n.toString()
     val alpha = if (isBlank) 0f else 1f
     Button(
-        onClick = {},
+        onClick = { callback(n) },
         shape = MaterialTheme.shapes.small,
         modifier = Modifier
             .size(80.dp)

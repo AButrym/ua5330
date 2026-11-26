@@ -7,15 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.engine.Board
-import com.example.myapplication.engine.finalBoard
 
 @Composable
-fun Grid(board: Board) {
-    Column(verticalArrangement = spacedBy(1.dp)) {
+fun Grid(
+    board: Board,
+    callback: (Int) -> Unit = {}
+) {
+    Column(
+        verticalArrangement = spacedBy(1.dp)
+    ) {
         for (row in board) {
             Row(horizontalArrangement = spacedBy(1.dp)) {
                 for (n in row) {
-                    Tile(n)
+                    Tile(n, callback)
                 }
             }
         }
@@ -24,6 +28,12 @@ fun Grid(board: Board) {
 
 @Preview(showBackground = true)
 @Composable
-fun GridPreview() {
-    Grid(finalBoard)
+fun GridPreview1() {
+    Grid(Board.finalBoard)
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GridPreview2() {
+    Grid(Board.shuffledBoard())
 }
